@@ -19,8 +19,9 @@
     font-size: 3rem;
     letter-spacing: 8px;
     margin-bottom: 4px;
-    background: linear-gradient(to bottom, #fff, #666);
+    background: linear-gradient(to bottom, #000, #444);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
