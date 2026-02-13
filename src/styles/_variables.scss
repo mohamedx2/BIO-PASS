@@ -1,14 +1,14 @@
 // Design Tokens
-$bg-color: #050505;
-$surface-color: rgba(255, 255, 255, 0.05);
-$border-color: rgba(255, 255, 255, 0.1);
+$bg-color: #ffffff;
+$surface-color: rgba(0, 0, 0, 0.05);
+$border-color: rgba(0, 0, 0, 0.1);
 
-$accent-valid: #00ff88;
-$accent-warning: #ffaa00;
-$accent-danger: #ff4444;
+$accent-valid: #00cc6a; // Darkened for readability on white
+$accent-warning: #e69900; // Darkened for readability on white
+$accent-danger: #d93025; // Darkened for readability on white
 
-$text-primary: #ffffff;
-$text-secondary: rgba(255, 255, 255, 0.6);
+$text-primary: #050505;
+$text-secondary: rgba(0, 0, 0, 0.6);
 
 $font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro",

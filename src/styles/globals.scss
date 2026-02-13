@@ -3,6 +3,9 @@
 
 :root {
     --font-mono: #{$font-mono};
+    --accent-valid: #{$accent-valid};
+    --accent-warning: #{$accent-warning};
+    --accent-danger: #{$accent-danger};
 }
 
 * {
