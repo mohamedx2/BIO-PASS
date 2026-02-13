@@ -41,7 +41,8 @@ export async function signToken(payload: object, privateKey: CryptoKey): Promise
 
     // Return base64 encoded payload + signature
     const payloadB64 = btoa(JSON.stringify(payload));
-    const signatureB64 = btoa(String.fromCharCode(...new Uint8Array(signature)));
+    // Convert ArrayBuffer to string via Array.from to avoid spread operator iteration issues in TS
+    const signatureB64 = btoa(String.fromCharCode(...Array.from(new Uint8Array(signature))));
 
     return `${payloadB64}.${signatureB64}`;
 }
@@ -64,7 +65,7 @@ export async function encryptData(data: string, key: CryptoKey): Promise<{ iv: U
     const encoder = new TextEncoder();
     const iv = window.crypto.getRandomValues(new Uint8Array(12));
     const ciphertext = await window.crypto.subtle.encrypt(
-        { ...ENCRYPTION_ALGO, iv },
+        { name: "AES-GCM", iv: iv as unknown as BufferSource },
         key,
         encoder.encode(data)
     );
@@ -76,7 +77,7 @@ export async function encryptData(data: string, key: CryptoKey): Promise<{ iv: U
  */
 export async function decryptData(ciphertext: ArrayBuffer, key: CryptoKey, iv: Uint8Array): Promise<string> {
     const decrypted = await window.crypto.subtle.decrypt(
-        { ...ENCRYPTION_ALGO, iv },
+        { name: "AES-GCM", iv: iv as unknown as BufferSource },
         key,
         ciphertext
     );
@@ -90,7 +91,7 @@ export async function decryptData(ciphertext: ArrayBuffer, key: CryptoKey, iv: U
 export function generateSessionId(): string {
     const array = new Uint8Array(24);
     window.crypto.getRandomValues(array);
-    return btoa(String.fromCharCode(...array))
+    return btoa(String.fromCharCode(...Array.from(array)))
         .replace(/\+/g, "-")
         .replace(/\//g, "_")
         .replace(/=/g, "");

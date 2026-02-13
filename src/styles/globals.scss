@@ -1,0 +1,58 @@
+@import 'variables';
+@import 'mixins';
+
+:root {
+    --font-mono: #{$font-mono};
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: $bg-color;
+    color: $text-primary;
+    font-family: $font-mono;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.glass {
+    @include glass;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-valid {
+    background-color: $accent-valid;
+    @include status-shadow($accent-valid);
+}
+
+.status-warning {
+    background-color: $accent-warning;
+    @include status-shadow($accent-warning);
+}
+
+.status-danger {
+    background-color: $accent-danger;
+    @include status-shadow($accent-danger);
+}

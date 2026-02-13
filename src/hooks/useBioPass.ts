@@ -4,8 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import {
     generateSigningKeyPair,
     signToken,
-    generateSessionId,
-    encryptData
+    generateSessionId
 } from "@/lib/crypto";
 import { BioPassSession, BioPassState } from "@/types/biopass";
 
@@ -58,12 +57,9 @@ export function useBioPass() {
             // 2. Sign token
             const token = await signToken(session, keys.privateKey);
 
-            // 3. Encrypt for LocalStorage (Simulated encryption for metadata)
-            // Note: In a real app, we'd use a derived key, but here we fulfill the requirement
-            // by generating a temporary key and storing the ciphertext.
-            // For this demo, we'll store the session as is but mark it as "encrypted-ready"
+            // 3. Store session metadata in LocalStorage (obfuscated)
             const meta = JSON.stringify(session);
-            localStorage.setItem(SESSION_KEY, btoa(meta)); // Simple obfuscation for demo, matching "Minimal Data Exposure"
+            localStorage.setItem(SESSION_KEY, btoa(meta));
 
             setState({
                 status: "valid",

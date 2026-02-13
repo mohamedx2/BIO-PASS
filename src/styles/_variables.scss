@@ -1,0 +1,18 @@
+// Design Tokens
+$bg-color: #050505;
+$surface-color: rgba(255, 255, 255, 0.05);
+$border-color: rgba(255, 255, 255, 0.1);
+
+$accent-valid: #00ff88;
+$accent-warning: #ffaa00;
+$accent-danger: #ff4444;
+
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.6);
+
+$font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+$transition-speed: 0.3s;
+$border-radius: 16px;
